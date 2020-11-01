@@ -14,7 +14,9 @@ export class PrevisoesService {
   }
 
 
-  public obterPrevisoes(): Observable<Previsao[]>{
-    return this.httpClient.get<Previsao[]>('http://api.openweathermap.org/data/2.5/forecast?q=itu&appid=ef0b0973b783e0614ac87612ec04344b&units=metric&lang=pt_br&cnt=16');
+  public obterPrevisoes(cidade): Observable<Previsao[]>{ //WHY OBSERVABLE DON't RELOAD WHEN CHANGE?????
+    let converte = cidade.replace(" ", "+"); //remove spaces
+    console.log(cidade); //here shows parameters pass in the page loading
+    return this.httpClient.get<Previsao[]>('http://api.openweathermap.org/data/2.5/forecast?q=' + converte + '&appid=e3e02e318d0e5cbfd0bc372729e4e5c0&units=metric&lang=pt_br&cnt=3');
   }
 }

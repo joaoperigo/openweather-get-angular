@@ -1,5 +1,16 @@
 <div class="container">
   <div class="row">
-    <app-previsao class="col-4 mb-2" [previsao]="p" *ngFor="let p of previsoes"></app-previsao>
+    <div class="col-12 col-md-8 offset-md-2 mt-5 mb-5">
+      <div class="form-group">
+        <label for="cidadeInput">buscar cidade</label>
+        <input type="text" class="form-control" id="cidadeInput" [(ngModel)]="cidade" #cidadeInput>
+      </div>
+      <button class="btn btn-primary btn-block mt-3" (click)="adicionarCidade(cidadeInput)">
+        Adicionar
+      </button>
+    </div>
+    <ng-container *ngIf="show">
+      <app-previsao class="col-4 mb-2" [previsao]="p" *ngFor="let p of previsoes"></app-previsao>
+    </ng-container>
   </div>
 </div>
